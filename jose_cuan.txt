@@ -15,15 +15,63 @@
 
 ### Question #2:
 1. Create a new directory named `subtest` under `test` repo and add a file `b.txt` into it, the content can be anything.
-
+~$ mkdir subtest
+~$ cd subtest
+~$ touch b.txt
+~$ vi b.txt
 
 2. Add some more files, for example `a1.txt`, `a2.txt`, to test repo and then add all of them to the staging area.
-
+~$ cd .. 
+~$ touch a1.txt
+~$ touch a2.txt
+~$ git add --all
 
 3. Run `git status` to make sure you have everything in the staging area and then commit them.
-
+~$ git status
+~$ git commit -m "Add subtest/b.txt, a1.txt, a2.txt to the staging area"
 
 4. Display all the commits we’ve done so far.
+~$ git show
+
+### Question #3:
+1. Create a new repository with the name `test` under your Github account and follow the instruction on Github to link the remote repository with the local one you just created in question 1. This [instruction link](https://help.github.com/articles/adding-a-remote/) might be useful.
+~$ git remote add origin https://github.com/jcuan10/test.git
+~$ git branch -M main
+~$ git push -u origin main
+
+2. Add a new line “Github is awesome” to the file `a.txt` under the local repo `test` and then add the change to the staging area.
+~$ vi a.txt
+~$ git add a.txt
+
+3. Now `a.txt` has two versions. Use `git diff` to show the difference between the old version that we just committed and the new one in the staging area.
+~$ git diff --staged
+
+4. Commit the changes and push it to the remote repo.
+~$ git commit -m "add line to a.txt and using dit diff"
+~$ git push -u origin main
+
+### Question #4:
+1. Read [this tutorial](https://www.atlassian.com/git/tutorials/resetting-checking-out-and-reverting) and finish the following questions using the right commands.
+2. Edit `a1.txt` and add it to the staging area and then try to undo the changes.
+~$ vi a1.txt
+~$ git add a1.txt
+~$ git restore - -staged a1.txt
+~$ git restore a1.txt
+
+3. Edit the file `a1.txt` and commit it to the repository and then try to undo the changes you just committed.
+~$ vi a1.txt
+~$ git add a1.txt
+~$ git commit -m “a1.txt changed and about to be committed ”
+~$ git log 
+~$ git reset  <commit-SHA>  a1.txt
+
+
+
+
+
+
+
+
 
 
 
